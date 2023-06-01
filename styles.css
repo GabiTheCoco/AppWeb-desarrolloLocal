@@ -1,0 +1,541 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500;700&display=swap');
+#map{
+    display: none;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    box-sizing: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html, body{
+    height: 100vh;
+}
+
+:root{
+    --colorLetra: #f5f5e4;
+    --colorSubmit: #0B2447;
+}
+
+body, .mainContainer, .formBlock{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body{
+    /* background: linear-gradient(180deg, #0B2447 10%, #19376D, #576CBC); */
+    background-color: #0B2447;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='390' height='390' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%2319376D' stroke-width='1.7'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23576CBC'%3E%3Ccircle cx='769' cy='229' r='8'/%3E%3Ccircle cx='539' cy='269' r='8'/%3E%3Ccircle cx='603' cy='493' r='8'/%3E%3Ccircle cx='731' cy='737' r='8'/%3E%3Ccircle cx='520' cy='660' r='8'/%3E%3Ccircle cx='309' cy='538' r='8'/%3E%3Ccircle cx='295' cy='764' r='8'/%3E%3Ccircle cx='40' cy='599' r='8'/%3E%3Ccircle cx='102' cy='382' r='8'/%3E%3Ccircle cx='127' cy='80' r='8'/%3E%3Ccircle cx='370' cy='105' r='8'/%3E%3Ccircle cx='578' cy='42' r='8'/%3E%3Ccircle cx='237' cy='261' r='8'/%3E%3Ccircle cx='390' cy='382' r='8'/%3E%3C/g%3E%3C/svg%3E");
+    color: var(--colorLetra);
+    height: 100%;
+}
+
+.contenidoPrincipal {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mainContainer{
+    height: 40%;
+    margin: auto;
+    display: block;
+}
+
+.mainContainer h1{
+    text-align: center;
+    margin: 0 0 0.6rem 0;
+    font-weight: 700;
+    font-size: 3.5em;
+}
+
+
+.formBlock{
+    flex-direction: column;
+    gap: .8em;
+    height: 36.8%;
+}
+
+.inputBlock{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 60%;
+    width: 62.7%;
+}
+
+.codeIso3166{
+    width: 45%;
+    height: 70%;
+    padding-left: 1%;
+}
+
+.city{
+    width: 45%;
+    height: 59%;
+    padding-left: 1%;
+    overflow: hidden;
+    outline: none;
+}
+
+.codeIso3166, .city{
+    border-color: #A4E7D7;
+    background-color: #576CBC;
+    border-radius: .5em;
+    color: #ffffff;
+}
+
+.city::placeholder{
+    color: #ffffff;
+}
+
+.sendData{
+    width: 20%;
+    height: 55%;
+    font-size: .6em;
+    border-radius: .8em;
+    border-color: #A4E7D7;
+    background-color: transparent;
+    font-size: 1em;
+    color: #ffffff;
+}
+
+.sendData:hover{
+    background-color: #576CBC;
+    transition: 600ms;
+}
+
+#lupita{
+    width: auto;
+    /* height: auto; */
+    border-radius: 1.5em;
+    display: flex;
+    align-items: center;
+    padding: .8rem;
+}
+
+#lupita:hover{
+    background-color: #576CBC;
+    transition: 600ms;
+}
+
+/* prueba peruana*/
+.peruano1, .peruano2, .peruano3{
+    display:flex;
+}
+
+.peruano1, .peruano2{
+    flex-direction: row;
+}
+
+.peruano1{
+    margin:0;
+    height: 10%;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.peruano2 {
+    height: 100%;
+    width: 60%;
+    justify-content: flex-end;
+}
+
+.titulo{
+    margin: 0;
+    font-size: 2em;
+}
+
+.bloqueInformacion{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.bloqueClima, .bloqueMapa{
+    background-color: #005077;
+    height: 95%;
+    width: 40%;
+    border-radius: 1em;
+    border: 1px solid white;
+}
+
+.bloqueClima, .contenedorClima1, .contenedorClima2, .contenedorTemp1,
+    .contenedorTemp2, .mainTemp, .contenedorTemp3, .contenedorClima2, .contenedorTiempo{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* border: 1px solid black; */
+    color: #f5f5f5;
+    text-align: center;
+}
+
+.bloqueClima, .contenedorClima1, .contenedorTemp2, .contenedorTemp3, .contenedorTiempo {
+    flex-direction: column;
+}
+
+.resumen {
+    border: 1px solid black;
+    width: 80%;
+    height: 5%;
+    font-size: 1.4em;
+    font-weight: 800;
+}
+
+.contenedorClima1 {
+    width: 80%;
+    height: 60%;
+}
+
+.contenedorTemp1{
+    width: 100%;
+    height: 80%;
+}
+
+.contenedorTemp2{
+    width: 50%;
+    height: 100%;
+}
+
+.estadoTiempo{
+    width: 60%;
+    height: 15%;
+    /* font-size: 1em; */
+}
+
+.estadoTiempoP{
+    font-size: 1.2em;
+    margin-bottom: 0;
+}
+
+.mainTemp{
+    width: 95%;
+    height: 60%;
+}
+
+.iconTemp{
+    width: 40%;
+    height: 60%;
+    font-size: 1em;
+}
+
+.temperatura{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 55%;
+    height: 60%;
+    /* font-size: 1em; */
+}
+
+.tempP{
+    /* padding-top: .2em; */
+    font-size: 3em;
+}
+
+/* .labelTemp{
+    width: 50%;
+    height: 5%;
+} */
+
+.sensacionTermica{
+    width: 80%;
+    height: 28%;
+    /* font-size: 1em; */
+}
+
+.sensacionTermicaP{
+    font-size: 2.6em;
+}
+
+.contenedorTemp3{
+    width: 50%;
+    height: 100%;
+}
+
+.tempMax, .tempMin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    width: 60%;
+    height: 30%;
+    /* font-size: 1em; */
+}
+
+.tempMaxP, .tempMinP{
+    font-size: 3em;
+}
+
+div label{
+    /* text-align: left; */
+    font-size: .6em;
+    color: #40E0D0;
+}
+/* .tempMin{
+    width: 60%;
+    height: 35%;
+} */
+
+
+.contenedorClima2 {
+    width: 80%;
+    height: 27%;
+}
+
+.humedad, .presion{
+    width: 20%;
+    height: 60%;
+}
+
+.humedadP{
+    font-size: 2.4em;
+}
+
+.presionP{
+    padding-top: .6em;
+    font-size: 1.3em;
+}
+
+.contenedorTiempo{
+    height: 90%;
+    width: 50%
+}
+
+.amanecer, .anochecer{
+    width: 60%;
+    height: 42%;
+}
+
+.amanecerP, .anochecerP{
+    font-size: 1.8em;
+}
+
+.iconTemp{
+    border: 1px solid black;
+}
+
+.estadoTiempo{
+    border: 1px solid black;
+}
+
+.temperatura{
+    border: 1px solid black;
+}
+
+.sensacionTermica{
+    border: 1px solid black;
+}
+
+.tempMax{
+    border: 1px solid black;
+
+}
+
+.tempMin{
+    border: 1px solid black;
+
+}
+
+.humedad{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.amanecer{
+    border: 1px solid black;
+
+}
+
+.anochecer{
+    border: 1px solid black;
+
+}
+
+.presion{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#map{
+    height: 100%;
+    border-radius: 1em;
+}
+
+
+/* media querys para el responsive de telefono */
+@media only screen and (max-width: 768px) {
+
+    .mainContainer h1{
+        font-size: 2.5rem;
+        font-weight: 200;
+        padding: 0;
+    }
+
+    .titulo{
+        text-align: center;
+        margin-bottom: .1em;
+        font-weight: 200;
+        font-size: 2.5rem;
+    }
+
+    .contenidoPrincipal{
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .peruano1{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 15%;
+    }
+
+    .peruano2{
+        justify-content: space-evenly;
+        align-items: center;
+        width: 90%;
+    }
+
+    .inputBlock{
+        width: 75%;
+        height: 90%;
+        justify-content: space-between;
+    }
+
+    .bloqueInformacion{
+        flex-direction: column;
+    }
+
+    .bloqueClima, .bloqueMapa{
+        width: 85%;
+        height: 45%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    .mainContainer h1{
+        font-size: 3.5rem;
+        font-weight: 200;
+        padding: 0;
+        margin: 0;
+    }
+
+    .titulo{
+        text-align: center;
+        margin-bottom: .1em;
+        font-weight: 200;
+        font-size: 2.8rem;
+    }
+
+    .contenidoPrincipal{
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .peruano1{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 15%;
+    }
+
+    .peruano2{
+        justify-content: space-evenly;
+        align-items: center;
+        width: 90%;
+    }
+
+    .inputBlock{
+        width: 75%;
+        height: 90%;
+        justify-content: space-between;
+    }
+
+    .codeIso3166{
+        height: 50%;
+    }
+
+    .city{
+        height: 48%;
+    }
+
+    .sendData{
+        width: 30%;
+        font-size: 1.3em;
+        font-weight: 300;
+    }
+
+    .bloqueInformacion{
+        flex-direction: column;
+    }
+
+    .bloqueClima, .bloqueMapa{
+        width: 85%;
+        height: 45%;
+    }
+}
+  
+/* @media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    .mainContainer h1{
+        font-size: 2.5rem;
+        font-weight: 200;
+        padding: 0;
+    }
+
+    .titulo{
+        text-align: center;
+        margin-bottom: .1em;
+        font-weight: 200;
+        font-size: 2.8rem;
+    }
+
+    .contenidoPrincipal{
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .peruano1{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 15%;
+    }
+
+    .peruano2{
+        justify-content: space-evenly;
+        align-items: center;
+        width: 90%;
+    }
+
+    .inputBlock{
+        width: 75%;
+        height: 90%;
+        justify-content: space-between;
+    }
+
+    .bloqueInformacion{
+        flex-direction: column;
+    }
+
+    .bloqueClima, .bloqueMapa{
+        width: 85%;
+        height: 45%;
+    }
+} */

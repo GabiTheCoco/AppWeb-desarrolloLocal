@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="App web de tiempo meteorológico y clima">
+    <meta name="keywords" content="clima, tiempo">
+    <meta name="author" content="Gonza y Gabi">
+    <title>Webclima</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- libreria de iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+  </head>
+  <body class="mainContent">
+    <main class="contenidoPrincipal" contenido-principal>
+     <section class="mainContainer" main-container>
+       <h1 class="titulo animate__fadeInDown" titulo-element>Weather Wizard</h1>
+       <form class="formBlock" form-block> 
+       <section class="inputBlock" input-block>
+         <select name="pais" class="codeIso3166" size="0" required code-iso>
+            <option  selected value="default"> País... </option>
+         </select>
+         <input class="city" type="text" name="ciudad" id="ciudad" placeholder="Ciudad..." required city-element>
+       </section>
+         <button type="submit" class="sendData" send-data>
+          Buscar
+          <!-- <i class="fa-solid fa-magnifying-glass fa-rotate-90" id="lupita"></i> -->
+         </button>
+       </form>
+     </section>
+    </main>
+    <script src="scripts.js" type="module"></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+
+  </body>
+</html>
