@@ -3,6 +3,8 @@ import { peruanizar } from "./scripts.js"
 
 const apiKey = "";
 
+let bandera = true;
+
 
 export function callApi(country, city, peruano, map){
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric&lang=es`;
@@ -21,7 +23,7 @@ export function callApi(country, city, peruano, map){
                 localStorage.setItem("lat", dataJson.coord.lat)
                 localStorage.setItem("lon", dataJson.coord.lon)
                 peruanizar(peruano);
-                weatherLayer(dataJson.coord.lat, dataJson.coord.lon, map);
+                weatherLayer(dataJson.coord.lat, dataJson.coord.lon, map, dataJson.name);
                 showData(dataJson);
                 localStorage.setItem("peruano", "true");
             }
@@ -204,22 +206,29 @@ export function unixTimer(unixTiempo){
     let hora = fecha.getHours();
     let minutos = fecha.getMinutes();
 
+    if(minutos < 10)
+        minutos = '0' + fecha.getMinutes();
+
     return hora + ":" + minutos;
 }
 
-export function weatherLayer(lat, long, map){
+export function weatherLayer(lat, long, map, city){
 
-    console.log(typeof(map));
+    L.tileLayer(`https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${apiKey}`, {
+    }).addTo(map);
     
-    map.setView([lat, long], 13);
+    if(!bandera)
+        map.flyTo([lat, long], 4);
+    else{
+        map.setView([lat, long], 4);
+        bandera = false;
+    }
+    
 
+    let marcador = L.marker([lat, long]).addTo(map).bindPopup(city);
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 25,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-
-    L.tileLayer(`https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=${apiKey}`, {
-        maxZoom: 25
-    }).addTo(map);
+    marcador.on("dblclick", () => {
+        map.flyTo([lat, long], 12);
+    })
+    
 }
